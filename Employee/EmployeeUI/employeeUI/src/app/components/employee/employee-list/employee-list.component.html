@@ -1,0 +1,36 @@
+<div class='card'>
+    <div class='card-body'>
+  
+      <div class='table-responsive'>
+        <table class='table'
+        >
+          <thead>
+            <tr>
+              <th>EmployeeId</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Salary</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr appHighlight *ngFor='let emp of employees'>
+              
+              <td>
+                  {{ emp.EmployeeId | uppercase}}
+               
+              </td>
+              <td>{{ emp.FirstName  }}</td>
+              <td>{{ emp.LastName }}</td>
+              <td [ngClass]="{'positive' : emp.Salary > 10000, 'negative' :  emp.Salary < 10000}" >{{ emp.Salary | currency:'INR':'symbol':'1.2-2' }}</td>
+              <td>
+                  <a   [routerLink]="['/employees', 'edit', emp.Id]">
+                      <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

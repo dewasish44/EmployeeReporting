@@ -1,0 +1,49 @@
+  <form [formGroup]="createEmployeeForm" novalidate
+  (ngSubmit)="saveEmployee()">
+      <div class="form-group"  [ngClass]="{'has-error': createEmployeeForm.get('EmployeeId').touched 
+      && createEmployeeForm.get('EmployeeId').invalid }">
+      <label for="EmployeeId" class="control lable">Employee Id*</label>
+      <input type="text" id="EmployeeId" class="form-control" formControlName='EmployeeId'/>
+      <span class="help-block" 
+      *ngIf="createEmployeeForm.get('EmployeeId').touched &&  
+      createEmployeeForm.get('EmployeeId').invalid">EmployeeId Can't be blank</span>
+      </div>
+  
+      <div class="form-group"  [ngClass]="{'has-error': createEmployeeForm.get('FirstName').touched 
+      && createEmployeeForm.get('FirstName').invalid }">
+      <label for="FirstName" class="control lable">First Name*</label>
+      <input type="text" id="FirstName" class="form-control" formControlName='FirstName'/>
+      <span class="help-block" 
+      *ngIf="createEmployeeForm.get('FirstName').touched &&  
+      createEmployeeForm.get('FirstName').invalid">First Name Can't be blank</span>
+      </div>
+  
+      <div class="form-group"  [ngClass]="{'has-error': createEmployeeForm.get('LastName').touched 
+      && createEmployeeForm.get('LastName').invalid }">
+      <label for="LastName" class="control lable">Last Name*</label>
+      <input type="text" id="LastName" class="form-control" formControlName='LastName'/>
+      <span class="help-block" 
+      *ngIf="createEmployeeForm.get('LastName').touched &&  
+      createEmployeeForm.get('LastName').invalid">Last Name Can't be blank</span>
+      </div>
+  
+      <div class="form-group"  [ngClass]="{'has-error': createEmployeeForm.get('Salary').touched 
+      && createEmployeeForm.get('Salary').invalid }">
+          <label for="Salary" class="control lable">Salary*</label>
+          <input type="text" id="Salary" class="form-control"  formControlName='Salary'/>
+          <span class="help-block"
+          *ngIf="createEmployeeForm.get('Salary').touched &&  
+          createEmployeeForm.get('Salary').hasError('required')">Salary Cant be blank</span>
+          <span class="help-block"
+          *ngIf="createEmployeeForm.get('Salary').touched && 
+           createEmployeeForm.get('Salary').hasError('Salary')">Salary Mush be valid</span>
+          </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block btn-lg"
+        [title]="createEmployeeForm.valid ? 'Save your entered data' 
+        : 'Disabled until the form data is valid'"
+                    [disabled]="!createEmployeeForm.valid">
+        Update</button>
+    <button type="button" [routerLink]="['/employees']" class="btn btn-link btn-block btn-lg">Back To Employee List</button>
+      </div>
+    </form>
